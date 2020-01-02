@@ -4,6 +4,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Iuser} from '../models/user.model'
 import { ActivatedRoute } from "@angular/router";
 import { map } from 'rxjs/operators';
+import { MessagesService } from '../services/messages.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class UserFormComponent implements OnInit {
 
   formTitle:string;
   userId;
-  formMode;
+  formMode='addUser';
   userInformation;
 
   /* Pattern to check valid emails*/
@@ -42,16 +43,19 @@ export class UserFormComponent implements OnInit {
 
   constructor(
     private dbService: DataDbService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private messageService: MessagesService
     ){}
+
   ngOnInit() {
 
+    /* get url params*/
     this.route.params.subscribe(params=>{
-
       this.userId = params.id;
-      console.log("params id: ",this.userId )
-
+     
+      /*Check the url for user Id in order to set the form in Edit Mode*/
       if(this.userId!==undefined){
+        this.formMode='editUser'
         return this.dbService.getUser(this.userId).subscribe(userInfo=>{
           this.formTitle="Edit user";
           this.initializeForm(userInfo)
@@ -60,8 +64,37 @@ export class UserFormComponent implements OnInit {
       else{
         console.log("entro a else");
         this.formTitle="Add User";
+        this.formMode='addUser'
       }
     })
+  }
+
+  handleForm(){
+    if(this.formMode!=='addUser'){
+      const updatedUser = this.addUserForm.value;
+      this.dbService.updateUser(updatedUser,this.userId);
+      this.messageService.updateMessage({
+        type:"editedUser",
+        text:"User was updated!"
+      })
+    }else{
+
+      if(this.addUserForm.valid){
+        this.dbService.addNewUser(this.addUserForm.value);
+        this.addUserForm.reset();
+        this.formSubmitted=true;
+  
+        this.messageService.updateMessage({
+          type:"newUser",
+          text:"New user added to Database :)"
+        })
+
+        console.log('saved', this.formSubmitted);
+        
+        }else{
+          console.log("Form Not Valid")
+        }
+    }
   }
 
 
@@ -69,16 +102,13 @@ export class UserFormComponent implements OnInit {
 
 
   saveNewUser(){
-
-    if(this.addUserForm.valid){
-      this.dbService.addNewUser(this.addUserForm.value);
-      this.addUserForm.reset();
-      this.formSubmitted=true;
-      console.log('saved', this.formSubmitted);
-      }else{
-        console.log("Form Not Valid")
-      }
+    
   }
+
+  updateUser(){
+   
+ 
+   }
 
   closeModal():boolean{
     return this.formSubmitted=false;

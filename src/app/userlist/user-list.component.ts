@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DataDbService} from '../services/data-db.service';
 import {Iuser} from '../models/user.model';
-/* import { analytics } from 'firebase'; */
+import { MessagesService } from '../services/messages.service';
 
 @Component({
   selector: 'user-list',
@@ -17,10 +17,11 @@ export class UserListComponent implements OnInit {
   editInfo:Iuser;
   showUpdatedBanner:boolean=false;
   
-  constructor(private dbService: DataDbService) { }
+  constructor(
+    private dbService: DataDbService,
+    private messagesService:MessagesService ) { }
 
   ngOnInit() {
-
     this.dbService.getUsers().subscribe(users=>{
       this.users = users
       this.loading=false;
@@ -30,6 +31,10 @@ export class UserListComponent implements OnInit {
 
   handleRemove(id:string):void{
     this.dbService.removeUser(id)
+    this.messagesService.updateMessage({
+      type:"userDeleted",
+      text:'User was deleted from Data Base.'
+    })
   }
 
   openEditForm(user):void{
