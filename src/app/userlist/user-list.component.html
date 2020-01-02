@@ -1,0 +1,38 @@
+
+<modal *ngIf="openModal" (userUpdated)="setBannerStatus($event)" [userInformation]="editInfo">
+</modal>
+<div *ngIf="showUpdatedBanner" (click)="closeBanner()" class="alert alert-success update" role="alert">
+    User was updated on Database :) <button type="button" class="close" data-dismiss="alert">x</button>
+  </div>
+
+<div *ngIf="loading">
+    <div class="text-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+</div>
+<div class="card-container"  >
+    <div *ngFor="let user of users" class="card">
+
+        <img src="https://www.svgrepo.com/show/92827/avatar.svg">
+        <div>
+            <p class="user-name">{{user.name}}</p>
+            <p class="user-info">{{user.age}}</p>
+            <p class="user-info">{{user.email}}</p>
+            <p class="user-info">{{user.mobile}}</p>
+        </div>
+        <div class="card-buttons text-right">
+            <button (click)="handleRemove(user.id)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+            <button  routerLink="edit/{{user.id}}" data-toggle="modal" data-target="#editModal">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+
+</div>
+<router-outlet></router-outlet>
+
+
+
+<!--<!-- (click)="openEditForm(user)" -->
