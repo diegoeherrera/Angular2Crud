@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {DataDbService} from '../services/data-db.service';
+import {DataDbService} from '../../services/data-db.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Iuser} from '../models/user.model'
+import {Iuser} from '../../models/user.model'
 import { ActivatedRoute } from "@angular/router";
 import { map } from 'rxjs/operators';
-import { MessagesService } from '../services/messages.service';
+import { MessagesService } from '../../services/messages.service';
 
 
 @Component({
@@ -49,6 +49,10 @@ export class UserFormComponent implements OnInit {
 
   ngOnInit() {
 
+
+    /*
+    Wrappear toda la inicializacion en una funcion fuera de ng Oninit
+    */
     /* get url params*/
     this.route.params.subscribe(params=>{
       this.userId = params.id;

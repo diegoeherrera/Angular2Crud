@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {ModalComponent} from './modal.component';
-import { UserformModule } from '../userform/userform.module';
+import { UserformModule } from '../../shared/userform/userform.module';
 
 
 @NgModule({

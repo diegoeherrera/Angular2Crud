@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {UserListComponent} from './user-list.component'
 import {ModalComponent} from '../modal/modal.component'
-import { ReactiveFormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms'; 
+/* import { RouterModule, Routes } from '@angular/router'; */
 import { ModalModule } from '../modal/modal.module';
 
 

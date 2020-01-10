@@ -1,6 +1,6 @@
 import { Component, OnInit,Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {DataDbService} from '../services/data-db.service';
+/* import {FormControl, FormGroup, Validators} from '@angular/forms'; */
+import {DataDbService} from '../../services/data-db.service';
 import {ActivatedRoute} from '@angular/router';
 
 

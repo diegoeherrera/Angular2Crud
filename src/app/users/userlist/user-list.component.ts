@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {DataDbService} from '../services/data-db.service';
-import {Iuser} from '../models/user.model';
-import { MessagesService } from '../services/messages.service';
+import {DataDbService} from '../../services/data-db.service';
+import {Iuser} from '../../models/user.model';
+import { MessagesService } from '../../services/messages.service';
 
 @Component({
   selector: 'user-list',
