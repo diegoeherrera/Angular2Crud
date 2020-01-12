@@ -2,54 +2,7 @@
 
   <div class="modal-dialog" role="document">
       <div class="modal-content">
-
-       <!--  reactivar despues de refactorizar -->
-        <!--   <userForm></userForm> -->
-
-
-
-        <!-- <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-
-         <form [formGroup]="editUserForm" *ngIf="editUserForm">
-            <input class="form-control input-md" type="text" formControlName="name" placeholder="User Name">
-           <div class="alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
-              <p *ngIf="name.errors.required">Name is required</p>
-              <p *ngIf="name.errors.minlength">Name must be at least 4 characters long</p>
-              <p *ngIf="name.errors.maxlength">Name should not exceed 10 characters</p>
-            </div>
-
-            <input class="form-control input-md" type="text" formControlName="email" placeholder="User Email">
-            <div class="alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
-                <p *ngIf="email.errors.required">Email is required</p>
-                <p *ngIf="(email.dirty || email.touched ) && email.invalid && email.errors.pattern">Value has to be a valid email address </p>
-                <p *ngIf="email.errors.minlength">Email must be at least 8 characters long</p>
-                <p *ngIf="email.errors.maxlength">Email number should not exceed 20 characters long</p>
-              </div>
-
-              <input class="form-control input-md"type="text" formControlName="mobile" placeholder="Mobile Phone">
-              <div class="alert-danger" *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)">
-                  <p *ngIf="mobile.errors.required">mobile is required</p>
-                  <p *ngIf="mobile.errors.minlength">mobile must be at least 8 characters long</p>
-                  <p *ngIf="mobile.errors.maxlength">mobile number should not exceed 20 characters long</p>
-                </div>
-
-              <input class="form-control input-md"type="text" formControlName="age" placeholder="User Age">
-              <div class="alert-danger" *ngIf="age.invalid && (age.dirty || age.touched)">
-                  <p *ngIf="age.errors.required">Name is required</p>
-                  <p *ngIf="age.errors.maxlength">Age should not exceed 2 characters long</p>
-                </div>
-          </form>
-
-        <div class="modal-footer">
-          <button type="button"  class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" (click)="saveChanges()" data-dismiss="modal" class="btn btn-success">Save changes</button>
-        </div> -->
-
+        <userForm></userForm>
       </div>
     </div>
 </div>
