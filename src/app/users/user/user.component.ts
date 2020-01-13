@@ -20,7 +20,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.userInfo
-    console.log("INFO", this.userInfo)
+    /* console.log("INFO", this.userInfo) */
   }
 
   handleRemove(id:string):void{

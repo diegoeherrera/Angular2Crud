@@ -77,8 +77,9 @@ export class UserFormComponent implements OnInit {
     if(this.formMode!=='addUser'){
       const updatedUser = this.addUserForm.value;
       this.dbService.updateUser(updatedUser,this.userId);
+
       this.messageService.updateMessage({
-        type:"editedUser",
+        type:"updatedUser",
         text:"User was updated!"
       })
     }else{

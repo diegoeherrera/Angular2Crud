@@ -5,11 +5,13 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import {UserFormComponent} from './userform/user-form.component';
 import { ModalComponent } from './modal/modal.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
     UserFormComponent,
-    ModalComponent
+    ModalComponent,
+    MessagesComponent
   ],
   imports: [
     CommonModule, ReactiveFormsModule
@@ -17,6 +19,8 @@ import { ModalComponent } from './modal/modal.component';
   exports:[
     ReactiveFormsModule,
     UserFormComponent,
-    ModalComponent]
+    ModalComponent,
+    MessagesComponent
+  ]
 })
 export class SharedModule { }

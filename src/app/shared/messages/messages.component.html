@@ -1,0 +1,11 @@
+<div *ngIf="newMessage.type" 
+[ngClass]="{
+    'save': newMessage.type == 'newUser',
+    'delete': newMessage.type == 'userDeleted',
+    'updated': newMessage.type == 'updatedUser'
+    }"
+  class="alert alert-success save animated" 
+  role="alert">
+    {{newMessage.text}} <button type="button" class="close" (click)="closeModal()" data-dismiss="alert">x</button>
+  </div>
+
