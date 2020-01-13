@@ -29,26 +29,5 @@ export class UserListComponent implements OnInit {
    
   }
 
-  handleRemove(id:string):void{
-    this.dbService.removeUser(id)
-    this.messagesService.updateMessage({
-      type:"userDeleted",
-      text:'User was deleted from Data Base.'
-    })
-  }
-
-  openEditForm(user):void{
-    this.openModal = true;
-    this.editInfo = user;
-  }
-
-  setBannerStatus($event):void{
-    this.showUpdatedBanner=$event;
-  }
-
-  
-  closeBanner():boolean{  
-    return this.showUpdatedBanner=false;
-  }
 
 }

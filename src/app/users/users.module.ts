@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import {UserListComponent} from './userlist/user-list.component';
 import { SharedModule } from '../shared/shared.module';
 import { AppRoutingModule } from '../app-routing.module';
-
+import { MessagesComponent } from './messages/messages.component';
+import {UserComponent}  from './user/user.component';
 
 @NgModule({
   declarations: [ 
-    UserListComponent 
+    UserListComponent, MessagesComponent, UserComponent 
   ],
   imports: [
     AppRoutingModule, 
@@ -15,7 +16,7 @@ import { AppRoutingModule } from '../app-routing.module';
     SharedModule
   ],
   exports: [ 
-    UserListComponent 
+    UserListComponent, UserComponent 
   ]
 })
 export class UsersModule { }
