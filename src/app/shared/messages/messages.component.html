@@ -1,10 +1,14 @@
-
-  <div  *ngIf="newMessage.type"
+<div *ngIf="newMessage">
+  <div  
   appAutoHide="{{newMessage.type}}"
   class="" 
   >
     {{newMessage.text}}
   </div>
+</div>
+
+
+
 
 
 

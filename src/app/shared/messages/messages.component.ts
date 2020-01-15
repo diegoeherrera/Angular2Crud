@@ -13,8 +13,14 @@ export class MessagesComponent implements OnInit {
   ngOnInit() {
     this.messagesService.broadCast.subscribe(message=>{
       console.log("from messageComponent: ",message)
-      return this.newMessage = message
+       this.newMessage = message
+
+       setTimeout(()=>{
+         this.newMessage=null;
+       },2800)
     })
+
+
   }
 
 }
