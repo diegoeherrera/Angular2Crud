@@ -6,12 +6,15 @@ import { RouterModule, Routes } from '@angular/router';
 import {UserFormComponent} from './userform/user-form.component';
 import { ModalComponent } from './modal/modal.component';
 import { MessagesComponent } from './messages/messages.component';
+import { AutoHideDirective } from './auto-hide.directive';
+
 
 @NgModule({
   declarations: [
     UserFormComponent,
     ModalComponent,
-    MessagesComponent
+    MessagesComponent,
+    AutoHideDirective
   ],
   imports: [
     CommonModule, ReactiveFormsModule
@@ -20,7 +23,8 @@ import { MessagesComponent } from './messages/messages.component';
     ReactiveFormsModule,
     UserFormComponent,
     ModalComponent,
-    MessagesComponent
+    MessagesComponent,
+    AutoHideDirective
   ]
 })
 export class SharedModule { }

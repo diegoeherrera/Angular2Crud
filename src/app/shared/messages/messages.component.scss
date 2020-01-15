@@ -1,13 +1,52 @@
-.delete{
+
+.saved, .deleted, .updated{
+/*     padding:20px;
+    text-align: center;
+    font-size: 16px; */
+}
+
+
+.saved{
+    background:gree;
+    color:white;
+}
+
+
+
+.deleted{
     background:red;
-    color:yellow;
+    color:white;
 }
 
 .updated{
-    background:yellow;
-    color:black;
+    background:green;
+    color:white;
 }
 
-.closed {
-	max-height: 0;
+
+
+
+.animate{
+    width: 100%;
+    opacity: 0;
+    animation-name: moveup;
+    animation-duration: 4s;
+    text-align: center;
 }
+
+@keyframes moveup {
+ 0%{ opacity: 0; }
+
+ 50%{ opacity: 1; padding:20px }
+
+ 80%{ opacity:0; padding:0px;}
+
+ 100%{display:none!important; padding:0px;}
+    
+}
+
+
+
+
+
+
