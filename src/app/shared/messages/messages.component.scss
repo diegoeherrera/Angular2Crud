@@ -1,32 +1,26 @@
 
-.saved, .deleted, .updated{
-/*     padding:20px;
+.newUser, .userDeleted, .updatedUser{
     text-align: center;
-    font-size: 16px; */
-}
-
-
-.saved{
-    background:gree;
+    font-size: 16px;
     color:white;
 }
 
 
-
-.deleted{
-    background:red;
-    color:white;
+.newUser{
+    background:#35de5d;
 }
 
-.updated{
-    background:green;
-    color:white;
+.userDeleted{
+    background:#fd5e53 ;
+}
+
+.updatedUser{
+    background:#35de5d;
 }
 
 .message-banner{
     height:0px;
     width:100%;
-    /* display:none; */
 }
 
 .show{
@@ -35,35 +29,19 @@
     animation-name: show;
     animation-duration: 3s;
     text-align: center;
+    padding:20px;
 }
+@keyframes show {
+    0%{ opacity: 0; }
+    50%{ opacity:1; }
+   100%{ opacity: 0; display:none; }
+   }
 
 .hide{
+
     animation-name: hide;
-    animation-duration: 3s;
     text-align: center;
-    
-}
-
-
-
-/* 
-.animate{
-    width: 100%;
     opacity: 0;
-    animation-name: moveup;
-    animation-duration: 4s;
-    text-align: center;
-} */
-
-@keyframes show {
- 0%{ opacity: 0; }
-
- 100%{ opacity: 1; padding:20px; display:none; }
-/* 
- 80%{ opacity:0; padding:0px;}
-
- 100%{display:none!important; 
-    padding:0px;} */
     
 }
 

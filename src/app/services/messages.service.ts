@@ -10,6 +10,11 @@ broadCast = this.broadCastMessages.asObservable();
 
   updateMessage(newMessage: object){
     console.log("new message received: ", newMessage)
-    this.broadCastMessages.next(newMessage);
+
+    this.broadCastMessages.next({
+      id: new Date().getMilliseconds(),
+      ...newMessage
+    });
+    
   }
 }

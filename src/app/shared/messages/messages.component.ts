@@ -14,10 +14,6 @@ export class MessagesComponent implements OnInit {
     this.messagesService.broadCast.subscribe(message=>{
       console.log("from messageComponent: ",message)
        this.newMessage = message
-
-       setTimeout(()=>{
-         this.newMessage=null;
-       },2800)
     })
 
 

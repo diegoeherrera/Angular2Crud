@@ -2,11 +2,11 @@ import { Directive, ElementRef, Input, HostListener, HostBinding, OnInit, Render
 /* import { ConsoleReporter } from 'jasmine'; */
 
 @Directive({
-  selector: '[appAutoHide]'
+  selector: '[animateBanner]'
 })
-export class AutoHideDirective implements OnInit, AfterViewInit{
+export class AutoHideDirective implements OnInit{
 
-  @Input() appAutoHide;
+  @Input() Msg;
   bannerClass;
   constructor(
     private elRef: ElementRef,
@@ -15,116 +15,54 @@ export class AutoHideDirective implements OnInit, AfterViewInit{
 
   ngOnInit(){
 
-    console.log("directive onInit", this.appAutoHide)
+    console.log("directive onInit", this.Msg)
 
-    const parent = this.elRef.nativeElement.parentNode;
-    const child = this.elRef.nativeElement;
-    console.log(this.appAutoHide)
-    switch (this.appAutoHide) {
-      case "updatedUser":
-        this.elRef.nativeElement.classList.add('updated');
-        this.elRef.nativeElement.classList.add('show');
-        setTimeout(()=>{
-          /*check class assignment in order to make the movement fluid*/
-         this.renderer.removeClass(child,'show');
-         this.renderer.removeClass(child,'updated');
-         this.renderer.addClass(child,'hide');
-       },2000)
-
-       break;
-       
-       case "userDeleted":
-       this.elRef.nativeElement.classList.add('deleted');
-       this.elRef.nativeElement.classList.add('animate');
-       break;
-   
-       case "newUser":
-         this.elRef.nativeElement.classList.add('saved');
-         this.elRef.nativeElement.classList.add('animate');
-         break;
-     default:
-       break; 
- }
+    
 
   }
 
-  ngAfterViewInit(){
-
-    console.log("after INIT: ", this.appAutoHide)
-
-  }
 
 
  ngOnChanges(changes:SimpleChanges){
-    console.log("changes", changes)
-    console.log("directive onCnages", changes)
+
+    const parent = this.elRef.nativeElement.parentNode;
+    const banner = this.elRef.nativeElement;
+    const messageType = String(changes.Msg.currentValue.type);
+
+    switch (messageType) {
+      case "updatedUser":
+      this.animatedBanner(banner, messageType);
+       break;
+       
+       case "userDeleted":
+        this.animatedBanner(banner, messageType);
+       break;
+   
+       case "newUser":
+        this.animatedBanner(banner, messageType);
+         break;
+
+     default:
+       break; 
+ }
     
+  }
+
+
+  animatedBanner(banner, messageType){
+
+    this.renderer.removeClass(banner,'hide')
+    this.renderer.addClass(banner, messageType);
+    this.renderer.addClass(banner,'show');
+
+    setTimeout(()=>{     
+    this.renderer.removeClass(banner,messageType)
+    this.renderer.removeClass(banner,'show')
+    this.renderer.addClass(banner,'hide')
+   },3000)
+
   }
 
 
 }
 
-
-
-/* switch (this.appAutoHide) {
-  case "updatedUser":
-    this.elRef.nativeElement.classList.add('updated');
-    this.elRef.nativeElement.classList.add('animate');
-    break;
-    
-    case "userDeleted":
-    this.elRef.nativeElement.classList.add('deleted');
-    this.elRef.nativeElement.classList.add('animate');
-    break;
-
-    case "newUser":
-      this.elRef.nativeElement.classList.add('saved');
-      this.elRef.nativeElement.classList.add('animate');
-      break;
-  default:
-    break;
-}
-
-this.elRef.nativeElement.classList.add('animate');
-
- */
-
-
- /*
- 
- const parent = this.elRef.nativeElement.parentNode;
-    const child = this.elRef.nativeElement;
-    console.log(this.appAutoHide)
-    switch (this.appAutoHide) {
-      case "updatedUser":
-        this.elRef.nativeElement.classList.add('updated');
-        this.elRef.nativeElement.classList.add('show');
-        setTimeout(()=>{
-
-         this.renderer.removeClass(child,'show');
-         this.renderer.removeClass(child,'updated');
-         this.elRef.nativeElement.classList.add('hide');
-
-         this.appAutoHide="";
-         console.log("elemente destroyed!")
-       },3000)
-
-       break;
-       
-       case "userDeleted":
-       this.elRef.nativeElement.classList.add('deleted');
-       this.elRef.nativeElement.classList.add('animate');
-       break;
-   
-       case "newUser":
-         this.elRef.nativeElement.classList.add('saved');
-         this.elRef.nativeElement.classList.add('animate');
-         break;
-     default:
-       break; 
- }
- 
- 
- 
- 
- */
