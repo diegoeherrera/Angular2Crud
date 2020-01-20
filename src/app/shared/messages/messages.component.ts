@@ -12,7 +12,6 @@ export class MessagesComponent implements OnInit {
 
   ngOnInit() {
     this.messagesService.broadCast.subscribe(message=>{
-      console.log("from messageComponent: ",message)
        this.newMessage = message
     })
 

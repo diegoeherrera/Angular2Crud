@@ -3,17 +3,19 @@
   User was Saved on Database :) <button type="button" class="close" (click)="closeModal()" data-dismiss="alert">x</button>
 </div> -->
 
-<form [formGroup]="addUserForm" (ngSubmit)="saveNewUser()">
+<form [formGroup]="userForm" (ngSubmit)="saveNewUser()">
 
   <h6>{{formTitle}}</h6>
 
   <div class="form-group" >
-    <input class="form-control input-lg" type="text" formControlName="name" placeholder="User Name">
-    <div class="alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
-      <p *ngIf="name.errors.required">Name is required</p>
+    <input class="form-control input-lg" type="text" formControlName="name" (keypress)="checkForm('name')" placeholder="User Name">
+      <div class="alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
+          <h2>{{formError.name}}</h2>
+     <!-- 
+       <p *ngIf="name.errors.required">Name is required</p>
       <p *ngIf="name.errors.minlength">Name must be at least 4 characters long</p>
-      <p *ngIf="name.errors.maxlength">Name should not exceed 10 characters</p>
-    </div>
+      <p *ngIf="name.errors.maxlength">Name should not exceed 10 characters</p> -->
+    </div> 
 
     <input class="form-control input-md" type="text" formControlName="email" placeholder="User Email">
     <div class="alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
@@ -39,7 +41,7 @@
   </div>
 
   <div class="form-group">
-    <button  [disabled]="addUserForm.invalid" 
+    <button  [disabled]="userForm.invalid" 
     type="submit" class="btn-lg btn-success btn-large btn-block" (click)="handleForm()"  data-dismiss="modal" >
       save user
     </button>
