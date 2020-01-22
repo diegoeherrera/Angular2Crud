@@ -8,7 +8,13 @@
   <h6>{{formTitle}}</h6>
 
   <div class="form-group" >
-    <input class="form-control input-lg" type="text" (focus)="checkForm('name')" formControlName="name"  placeholder="User Name">
+    <input class="form-control input-lg" 
+      type="text" 
+      formControlName="name"  
+      placeholder="User Name"
+    >
+    <app-input-error [fieldErrors]="name.errors" [fieldTouched]="name.touched"></app-input-error>
+    
     <div class="alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
       {{formError.name}}    
      <!--  <p *ngIf="name.errors.required">Name is required</p>

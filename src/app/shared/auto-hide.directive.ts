@@ -14,14 +14,8 @@ export class AutoHideDirective implements OnInit{
     ) {}
 
   ngOnInit(){
-
     console.log("directive onInit", this.Msg)
-
-    
-
   }
-
-
 
  ngOnChanges(changes:SimpleChanges){
 

@@ -7,6 +7,7 @@ import {UserFormComponent} from './userform/user-form.component';
 import { ModalComponent } from './modal/modal.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AutoHideDirective } from './auto-hide.directive';
+import { InputErrorComponent } from './userform/input-error/input-error.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { AutoHideDirective } from './auto-hide.directive';
     UserFormComponent,
     ModalComponent,
     MessagesComponent,
-    AutoHideDirective
+    AutoHideDirective,
+    InputErrorComponent
   ],
   imports: [
     CommonModule, ReactiveFormsModule
@@ -24,7 +26,8 @@ import { AutoHideDirective } from './auto-hide.directive';
     UserFormComponent,
     ModalComponent,
     MessagesComponent,
-    AutoHideDirective
+    AutoHideDirective,
+    InputErrorComponent
   ]
 })
 export class SharedModule { }
