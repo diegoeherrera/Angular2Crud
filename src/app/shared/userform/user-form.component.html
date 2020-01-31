@@ -1,48 +1,22 @@
 
-<!-- <div *ngIf="formSubmitted" class="alert alert-success save" role="alert">
-  User was Saved on Database :) <button type="button" class="close" (click)="closeModal()" data-dismiss="alert">x</button>
-</div> -->
-
 <form [formGroup]="userForm" (ngSubmit)="saveNewUser()">
 
   <h6>{{formTitle}}</h6>
 
-  <div class="form-group" >
-    <input class="form-control input-lg" 
-      type="text" 
-      formControlName="name"  
-      placeholder="User Name"
-    >
-    <app-input-error [fieldErrors]="name.errors" [fieldTouched]="name.touched"></app-input-error>
+  <div class="form-group">
+
+    <input class="form-control input-lg" [ngClass]="{'error-field': (!name.untouched && name.errors.required)}" type="text" formControlName="name"  placeholder="User Name">
+    <app-input-error  [fieldErrors]="userForm.controls['name']" fieldName="Name"></app-input-error>
     
-    <div class="alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
-      {{formError.name}}    
-     <!--  <p *ngIf="name.errors.required">Name is required</p>
-      <p *ngIf="name.errors.minlength">Name must be at least 4 characters long</p>
-      <p *ngIf="name.errors.maxlength">Name should not exceed 10 characters</p> -->
-    </div> 
-
-    <input class="form-control input-md" type="text" formControlName="email" placeholder="User Email">
-    <div class="alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
-        <p *ngIf="email.errors.required">Email is required</p>
-        <p *ngIf="(email.dirty || email.touched ) && email.invalid && email.errors.pattern">Value has to be a valid email address </p>
-        <p *ngIf="email.errors.minlength">Email must be at least 8 characters long</p>
-        <p *ngIf="email.errors.maxlength">Email number should not exceed 20 characters long</p>
-      </div>
-
-    <input class="form-control input-md"type="text" formControlName="mobile" placeholder="Mobile Phone">
-    <div class="alert-danger" *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)">
-        <p *ngIf="mobile.errors.required">mobile is required</p>
-        <p *ngIf="mobile.errors.minlength">mobile must be at least 8 characters long</p>
-        <p *ngIf="mobile.errors.maxlength">mobile number should not exceed 20 characters long</p>
-      </div>
-
-    <input class="form-control input-md"type="text" formControlName="age" placeholder="User Age">
-    <div class="alert-danger" *ngIf="age.invalid && (age.dirty || age.touched)">
-        <p *ngIf="age.errors.required">Name is required</p>
-        <p *ngIf="age.errors.maxlength">Age should not exceed 2 characters long</p>
-      </div>
-
+    <input class="form-control input-md" [ngClass]="{'error-field': (!email.untouched && email.errors.required)}" type="text" formControlName="email" placeholder="User Email">
+    <app-input-error  [fieldErrors]="userForm.controls['email']" fieldName="Email"></app-input-error>
+ 
+    <input class="form-control input-md"type="text" [ngClass]="{'error-field': (!mobile.untouched && mobile.errors.required)}" formControlName="mobile" placeholder="Mobile Phone">
+    <app-input-error  [fieldErrors]="userForm.controls['mobile']" fieldName="Mobile"></app-input-error>
+ 
+    <input class="form-control input-md" [ngClass]="{'error-field': (!age.untouched && age.errors.required)}" type="text" formControlName="age" placeholder="User Age">
+    <app-input-error  [fieldErrors]="userForm.controls['age']" fieldName="Age"></app-input-error>
+ 
   </div>
 
   <div class="form-group">

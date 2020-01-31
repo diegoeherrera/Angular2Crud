@@ -1,6 +1,13 @@
 input{
   margin:10px 0px;
 }
+.error-field{
+  box-shadow: inset 0px 0px 8px rgb(255, 0, 0);
+  input::after{
+    content:" *";
+    color:white;
+  }
+}
 
 form{
   padding:20px;

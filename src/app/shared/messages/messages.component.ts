@@ -14,8 +14,6 @@ export class MessagesComponent implements OnInit {
     this.messagesService.broadCast.subscribe(message=>{
        this.newMessage = message
     })
-
-
   }
 
 }

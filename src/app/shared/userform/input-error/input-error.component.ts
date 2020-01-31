@@ -5,22 +5,25 @@ import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/cor
   templateUrl: './input-error.component.html',
   styleUrls: ['./input-error.component.scss']
 })
-export class InputErrorComponent implements OnInit, OnChanges {
-  @Input() fieldErrors: Object;
-  @Input() fieldTouched;
-  public errorMsg: string;
+
+export class InputErrorComponent implements OnInit {
+  @Input() fieldErrors;
+  @Input() fieldName;
+  public errorMsg;
 
 
   constructor() { }
 
   ngOnInit() {
-    console.log(this.fieldErrors, ' /// ', this.fieldTouched);
+    console.log("errores: ", this.fieldErrors , ' /// ', "field name: ", this.fieldName);
+   
   }
 
-  ngOnChanges(changes:SimpleChanges){
-    console.log(changes.fieldErrors, "///", changes.fieldTouched)
+/*   ngOnChanges(changes:SimpleChanges){
+    console.log(changes.fieldErrors, "///", changes.fieldTouched);
+    this.errorMsg =  changes.fieldErrors.required;
   }
-
+ */
   setErrorMsgs(){
 
     

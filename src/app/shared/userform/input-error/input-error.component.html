@@ -1,1 +1,16 @@
-<p>{{errorMsg}}</p>
+<div class="error-container">
+    <p class="error-message" *ngIf="!fieldErrors.untouched && fieldErrors.hasError('required')"> 
+        {{fieldName}} is Required!
+    </p>
+    <p class="error-message" *ngIf="fieldErrors.hasError('minlength')">
+        {{fieldName}}  is to short, it should have more than {{fieldErrors.errors.minlength.requiredLength}} characters!
+    </p>
+    <p class="error-message" *ngIf="fieldErrors.hasError('maxlength')">
+        {{fieldName}} is larger than expected, max lenght for this field is {{fieldErrors.errors.maxlength.requiredLength}} characters
+    </p>
+    <p class="error-message" *ngIf="(fieldErrors.dirty || fieldErrors.touched ) && fieldErrors.invalid && fieldErrors.errors.pattern">
+        Not valid, please enter a valid email.
+    </p>
+</div>
+
+

@@ -104,11 +104,10 @@ export class UserFormComponent implements OnInit {
 
 
   saveNewUser(){
+
     const updatedUser = this.userForm.value;
-
-      this.dbService.updateUser(updatedUser,this.userId);
-
-      this.messageService.updateMessage({
+    this.dbService.updateUser(updatedUser,this.userId);
+    this.messageService.updateMessage({
         type:"updatedUser",
         text:"User was updated!"
       }) 
@@ -116,13 +115,14 @@ export class UserFormComponent implements OnInit {
 
   updateUser(){
     this.dbService.addNewUser(this.userForm.value);
-        this.userForm.reset();
-        this.formSubmitted=true;
-  
-        this.messageService.updateMessage({
-          type:"newUser",
-          text:"New user added to Database :)"
-        })
+    this.userForm.reset();
+    this.formSubmitted=true;
+    
+    //Send message to service to update message component
+    this.messageService.updateMessage({
+      type:"newUser",
+      text:"New user added to Database :)"
+      })
    }
   
 
@@ -130,52 +130,6 @@ export class UserFormComponent implements OnInit {
   closeModal():boolean{
     return this.formSubmitted=false;
   }
-
-  /* verificar la forma de que corra esta funciona cada vez que el usuario escribe en el input*/
-  checkForm(fieldName){
-
-    switch (fieldName) {
-      case 'name':
-        console.log(fieldName)
-        return this.checkName()
-        break;
-    
-      default:
-        break;
-    }
-
-  }
-
-
-    checkName(){
-
-    const nameErrors = this.userForm.controls.name
-
-    console.log(nameErrors)
-
-    if(nameErrors.touched && nameErrors.value==''){
-      this.formError.name = "Please enter a name";
-    }
-/* 
-      if(nameErrors && this.userForm.controls.name.touched){
-        this.formError.name = "Please enter a name";
-      } 
-      
-       if (nameErrors.minlength){
-        console.log("entra a min lenght, ", nameErrors)
-        this.formError.name = "Name should have more than 4 letters";
-      } 
-
-      if(nameErrors.maxlength){
-        console.log("entra a max lenght, ", nameErrors)
-         this.formError.name = "Name should not exceed 10 characters";
-      }
-
-    } */
-        
-  } 
-
-
 
   onValueChanges(): void {
     this.userForm.valueChanges.subscribe(val=>{
